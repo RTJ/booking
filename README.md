@@ -1,7 +1,5 @@
 # Booking.com API
 
-[![Build Status](https://travis-ci.org/hendricius/booking.svg?branch=master)](https://travis-ci.org/hendricius/booking)
-
 **This is a wrapper for the Booking.com API.** 
 
 `New features have been added, and the structure has changed.`
@@ -21,10 +19,6 @@ And then execute:
 
     $ bundle
 
-Or install it yourself as:
-
-    $ gem install booking-ruby
-
 # Setup
 
 Initialize the the gem by setting your username and password:
@@ -43,7 +37,7 @@ params = {
   checkout: (Time.now + (60 * 60 * 24 * 7 * 2)).strftime("%F"),
   hotel_ids: [303762]
 }
-response = BookingApi::Hotel.new.get_hotel_availabillity(request_parameters: params)
+response = BookingApi::Hotel.new.get_availabillity(request_parameters: params)
 
 # the parsed response is in the body
 => response.body
@@ -75,10 +69,10 @@ response = BookingApi::Hotel.new.get_hotel_availabillity(request_parameters: par
 
 ```
 
-## `get_hotel_description_translations`
+## `get_description`
 ```ruby
 params = { hotel_ids: [10003] }
-response = BookingApi::Client.new.get_hotel_description_translations(request_parameters: params)
+response = BookingApi::Client.new.get_description(request_parameters: params)
 
 response.body # =>
 [
@@ -98,8 +92,6 @@ response.body # =>
   }
 ]
 ```
-
-
 
 
 # FAQ

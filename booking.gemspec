@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Eugeniu Tambur"]
   spec.email         = ["eugeniu.rtj@gmail.com"]
 
-  spec.summary       = %q{Wrapper for the Booking.com API written in ruby. }
-  spec.homepage      = "https://github.com/hendricius/booking"
+  spec.summary       = %q{Wrapper for the Booking.com API written in ruby. ( successor of booking-ruby gem, forked from https://github.com/hendricius/booking }
+  spec.homepage      = "https://github.com/RTJ/booking"
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
   spec.bindir        = "exe"
