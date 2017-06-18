@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'booking_api/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "booking-com-ruby"
+  spec.name          = "booking-ruby"
   spec.version       = BookingApi::VERSION
   spec.authors       = ["Eugeniu Tambur"]
   spec.email         = ["eugeniu.rtj@gmail.com"]
