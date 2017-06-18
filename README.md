@@ -3,6 +3,7 @@
 **This is a wrapper for the Booking.com API.** 
 
 `New features have been added, and the structure has changed.`
+
 `- The initial code have been forked from hendricius/booking`
 
 
