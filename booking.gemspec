@@ -4,12 +4,12 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'booking_api/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "booking-ruby"
+  spec.name          = "booking-com-ruby"
   spec.version       = BookingApi::VERSION
-  spec.authors       = ["Hendrik Kleinwaechter"]
-  spec.email         = ["hendrik.kleinwaechter@gmail.com"]
+  spec.authors       = ["Eugeniu Tambur"]
+  spec.email         = ["eugeniu.rtj@gmail.com"]
 
-  spec.summary       = %q{Wrapper for the Booking.com API written in ruby.}
+  spec.summary       = %q{Wrapper for the Booking.com API written in ruby. }
   spec.homepage      = "https://github.com/hendricius/booking"
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }

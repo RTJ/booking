@@ -1,14 +1,14 @@
 require 'test_helper'
 
-describe BookingApi::Client do
-  let(:client) { BookingApi::Client.new }
+describe BookingApi::Hotel do
+  let(:hotel) { BookingApi::Hotel.new }
   describe "#http_service" do
     it "returns a http service" do
-      assert_equal BookingApi::HttpService, BookingApi::Client.new.http_service.class
+      assert_equal BookingApi::HttpService, BookingApi::Hotel.new.http_service.class
     end
   end
 
-  describe "#hotel_description_photos" do
+  describe "#get_photos" do
     let(:sample_response) do
       [
         {
@@ -36,22 +36,22 @@ describe BookingApi::Client do
     end
 
     it "has a method" do
-      assert_equal true, client.respond_to?(:hotel_description_photos)
+      assert_equal true, hotel.respond_to?(:get_photos)
     end
 
     it "requires an array of hotel ids" do
       assert_raises ArgumentError do
-        client.hotel_description_photos
+        hotel.get_photos
       end
-      client.hotel_description_photos(hotel_ids: [1,2])
+      hotel.get_photos(hotel_ids: [1,2])
     end
 
     it "returns a response list" do
-      assert_equal BookingApi::Images::ResponseList, client.hotel_description_photos(hotel_ids: [1,2]).class
+      assert_equal BookingApi::Images::ResponseList, hotel.get_photos(hotel_ids: [1,2]).class
     end
 
     it "returns an array of entries" do
-      entries = client.hotel_description_photos(hotel_ids: [1,2]).entries
+      entries = hotel.get_photos(hotel_ids: [1,2]).entries
       assert_equal BookingApi::Images::Image, entries.first.class
     end
 
@@ -59,18 +59,18 @@ describe BookingApi::Client do
       stub_request(:any, /.*booking.com.*/).
       to_return(:status => 200, :body => "", :headers => {})
       assert_raises JSON::ParserError do
-        client.hotel_description_photos(hotel_ids: [1,2]).entries
+        hotel.get_photos(hotel_ids: [1,2]).entries
       end
       stub_request(:any, /.*booking.com.*/).
       to_return(:status => 200, :body => nil, :headers => {})
       assert_raises JSON::ParserError do
-        client.hotel_description_photos(hotel_ids: [1,2]).entries
+        hotel.get_photos(hotel_ids: [1,2]).entries
       end
     end
   end
 
 
-  describe "#get_hotel_description_translations" do
+  describe "#get_description" do
     let(:sample_response) do
       [
         {
@@ -94,14 +94,14 @@ describe BookingApi::Client do
     end
 
     it "returns a Faraday::Response object containing the response in the `body` method" do
-      response = client.get_hotel_description_translations
+      response = hotel.get_description
       assert_equal Faraday::Response, response.class
       assert_equal Array, response.body.class
       assert_equal sample_response.length, response.body.length
     end
   end
 
-  describe "#get_hotel_overviews" do
+  describe "#get_information" do
     let(:sample_response) do
       [{
         commission: 0,
@@ -154,7 +154,7 @@ describe BookingApi::Client do
     end
 
     it "returns a Faraday::Response object containing the response in the `body` method" do
-      response = client.get_hotel_overviews
+      response = hotel.get_information
       assert_equal Faraday::Response, response.class
       assert_equal Array, response.body.class
       assert_equal sample_response.length, response.body.length

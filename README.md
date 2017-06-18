@@ -1,15 +1,20 @@
-# Booking
+# Booking.com API
 
 [![Build Status](https://travis-ci.org/hendricius/booking.svg?branch=master)](https://travis-ci.org/hendricius/booking)
 
-This is a wrapper for the Booking.com API. Currently only `gethotelavailbilityV2` and `getHotelDescriptionTranslations` are supported.
+**This is a wrapper for the Booking.com API.** 
+
+`New features have been added, and the structure has changed.`
+`- The initial code have been forked from hendricius/booking`
+
+
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'booking-ruby', require: ['booking_api']
+gem "booking-ruby", :git => 'https://github.com/RTJ/booking.git', require: ['booking_api']
 ```
 
 And then execute:
@@ -30,7 +35,7 @@ Initialize the the gem by setting your username and password:
 ```
 
 # Supported endpoints
-## `get_hotel_availabillity`
+## `get_availabillity`
 
 ```ruby
 params = {
@@ -38,7 +43,7 @@ params = {
   checkout: (Time.now + (60 * 60 * 24 * 7 * 2)).strftime("%F"),
   hotel_ids: [303762]
 }
-response = BookingApi::Client.new.get_hotel_availabillity(request_parameters: params)
+response = BookingApi::Hotel.new.get_hotel_availabillity(request_parameters: params)
 
 # the parsed response is in the body
 => response.body
