@@ -17,6 +17,14 @@ module BookingApi
       http_service.request_post("/json/getHotelAvailabilityV2", default_parameters.merge(request_parameters))
     end
 
+    def get_list_availabillity(request_parameters: {})
+      default_parameters = {
+        room1: "A,A",
+      }
+      http_service.request_get("/json/getHotelAvailabilityV2", default_parameters.merge(request_parameters))
+    end
+
+
     # gets hotel photos for the given hotel ids
     def get_photos(hotel_ids: [], request_parameters: {})
       raise ArgumentError if hotel_ids.empty?
@@ -25,7 +33,22 @@ module BookingApi
       }
       response = http_service.request_post("/json/bookings.getHotelDescriptionPhotos", default_parameters.merge(request_parameters))
       Images::ResponseList.new(response)
+
+      # https://distribution-xml.booking.com/json/bookings.getHotelDescriptionPhotos?city_ids=-3875419,-3875418
+
     end
+
+        # gets hotel photos for the given hotel ids
+    def get_hotels_photos(hotel_ids: [], request_parameters: {})
+      raise ArgumentError if hotel_ids.empty?
+      default_parameters = {
+        hotel_ids: hotel_ids.join(",")
+      }
+      http_service.request_post("/json/bookings.getHotelPhotos", default_parameters.merge(request_parameters))
+
+      # https://distribution-xml.booking.com/json/bookings.getHotelPhotos?hotel_ids=502335
+    end
+
 
     # gets detailed descriptions for the given hotels
     def get_description(request_parameters: {})

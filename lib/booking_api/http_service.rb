@@ -25,5 +25,13 @@ module BookingApi
       end
     end
 
+    def request_get(url, data)
+      connection.get do |req|
+        req.url url
+        req.headers['Content-Type'] = 'application/json'
+        req.body = data.to_json
+      end
+    end
+
   end
 end
