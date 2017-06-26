@@ -101,7 +101,7 @@ describe BookingApi::Hotel do
     end
   end
 
-  describe "#get_information" do
+  describe "#get_hotel_information" do
     let(:sample_response) do
       [{
         commission: 0,
@@ -154,7 +154,7 @@ describe BookingApi::Hotel do
     end
 
     it "returns a Faraday::Response object containing the response in the `body` method" do
-      response = hotel.get_information
+      response = hotel.get_hotel_information
       assert_equal Faraday::Response, response.class
       assert_equal Array, response.body.class
       assert_equal sample_response.length, response.body.length

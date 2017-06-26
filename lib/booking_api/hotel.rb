@@ -59,7 +59,7 @@ module BookingApi
 
 
     # gets an overview of the data for the given hotel ids.
-    def get_information(hotel_ids: [], request_parameters: {})
+    def get_hotel_information(hotel_ids: [], request_parameters: {})
       default_parameters = {}
       default_parameters[:hotel_ids] = hotel_ids.join(",") if hotel_ids.any?
       http_service.request_post("/json/bookings.getHotels", default_parameters.merge(request_parameters))
