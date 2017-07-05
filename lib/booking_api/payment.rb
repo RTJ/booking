@@ -33,7 +33,6 @@ module BookingApi
       http_service.request_post("/json/bookings.cancelBooking", default_parameters.merge(request_parameters))
     end
 
-
     private
 
   end
