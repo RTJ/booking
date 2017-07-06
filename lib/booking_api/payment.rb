@@ -10,9 +10,13 @@ module BookingApi
     end
 
     # Makes a booking for the specified hotel, room, guest.
-    def process_booking(request_parameters: {})
-      default_parameters = {}
-      http_service.secure_request_get("/json/bookings.processBooking", default_parameters.merge(request_parameters))
+    def process_booking(request_parameters)
+      http_service.secure_request_get("/json/bookings.processBooking", request_parameters)
+    end
+
+    # Makes a booking for the specified hotel, room, guest.
+    def process_booking_post(request_parameters)
+      http_service.secure_request_post("/json/bookings.processBooking", request_parameters)
     end
 
     #Returns a list of the bookings asscociated to the guest.
