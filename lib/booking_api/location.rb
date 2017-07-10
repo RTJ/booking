@@ -30,9 +30,8 @@ module BookingApi
     #   "languagecode": "en"
     # }
 
-    def get_cities(request_parameters: {})
-      default_parameters = {}
-      http_service.request_post("/json/bookings.getCities", default_parameters.merge(request_parameters))
+    def get_cities(request_parameters)
+      http_service.request_post("/json/bookings.getCities", request_parameters)
     end
 
     ########################################################
