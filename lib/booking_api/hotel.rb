@@ -70,10 +70,6 @@ module BookingApi
       http_service.request_get("/json/bookings.getHotelFacilityTypes", request_parameters)
     end
 
-    def get_room_facility_types(request_parameters)
-      http_service.request_get("/json/bookings.getRoomFacilityTypes", request_parameters)
-    end
-
     private
 
   end
