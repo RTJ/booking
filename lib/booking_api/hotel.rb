@@ -17,14 +17,6 @@ module BookingApi
       http_service.request_post("/json/getHotelAvailabilityV2", default_parameters.merge(request_parameters))
     end
 
-    def get_list_availabillity(request_parameters: {})
-      default_parameters = {
-        room1: "A,A",
-      }
-      http_service.request_get("/json/getHotelAvailabilityV2", default_parameters.merge(request_parameters))
-    end
-
-
     # gets hotel photos for the given hotel ids
     def get_photos(hotel_ids: [], request_parameters: {})
       raise ArgumentError if hotel_ids.empty?
@@ -66,7 +58,7 @@ module BookingApi
     end
 
     # Returns hotel facility types..
-    def get_hotel_facility_types(request_parameters)
+    def get_facility_types(request_parameters)
       http_service.request_get("/json/bookings.getHotelFacilityTypes", request_parameters)
     end
 
