@@ -17,7 +17,7 @@ module BookingApi
     #   countrycodes: "ar"
     # }
 
-    # response = BookingApi::Localtion.new.get_cities(request_parameters: city_params)
+    # response = BookingApi::Localtion.new.get_cities(city_params)
 
     # puts response.body
     # {
@@ -54,9 +54,8 @@ module BookingApi
     #   "name": "United Arab Emirates"
     # }
 
-    def get_countries(request_parameters: {})
-      default_parameters = {}
-      http_service.request_post("/json/bookings.getCountries", default_parameters.merge(request_parameters))
+    def get_countries(request_parameters)
+      http_service.request_post("/json/bookings.getCountries", request_parameters)
     end
 
     ########################################################
@@ -70,7 +69,7 @@ module BookingApi
     #   rows: 100
     # }
 
-    # response = BookingApi::Localtion.new.get_districts(request_parameters: country_params)
+    # response = BookingApi::Localtion.new.get_districts(country_params)
 
     # puts response.body
     # {
@@ -82,9 +81,8 @@ module BookingApi
     #   "nr_hotels": "37"
     # }
 
-    def get_districts(request_parameters: {})
-      default_parameters = {}
-      http_service.request_post("/json/bookings.getDistricts", default_parameters.merge(request_parameters))
+    def get_districts(request_parameters)
+      http_service.request_post("/json/bookings.getDistricts", request_parameters)
     end
 
     private
