@@ -43,11 +43,15 @@ module BookingApi
 
 
     # gets detailed descriptions for the given hotels
-    def get_description(request_parameters: {})
-      default_parameters = {}
-      http_service.request_post("/json/bookings.getHotelDescriptionTranslations", default_parameters.merge(request_parameters))
+    def get_description(request_parameters)
+      http_service.request_get("/json/bookings.getHotelDescriptionTranslations", request_parameters)
     end
 
+    # gets detailed descriptions for the given hotels
+    def get_rooms(request_parameters)
+      http_service.request_get("/json/bookings.getRooms", request_parameters)
+      # https://distribution-xml.booking.com/json/bookings.getRooms?rows=10&hotel_ids=121543
+    end
 
 
     # gets an overview of the data for the given hotel ids.
