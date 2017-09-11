@@ -16,6 +16,10 @@ module BookingApi
       }
       http_service.request_post("/json/getHotelAvailabilityV2", default_parameters.merge(request_parameters))
     end
+ 
+    def get_block_availability(request_parameters)
+      http_service.request_post("/json/bookings.getBlockAvailability", request_parameters)
+    end
 
     # gets hotel photos for the given hotel ids
     def get_photos(hotel_ids: [], request_parameters: {})
